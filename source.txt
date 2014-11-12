@@ -1,0 +1,11 @@
+leaflet + d3 crimemap
+http://csessig.wordpress.com/2014/01/11/using-hexagon-maps-to-show-areas-with-high-levels-of-reported-crime/
+
+http://www.delimited.io/blog/2013/12/1/hexbins-with-d3-and-leaflet-maps
+
+
+
+http://build-failed.blogspot.com/2012/03/maps-and-boardgames-part-1-introduction.html
+
+Drawing lines in hexagon
+http://www.html5rocks.com/en/tutorials/casestudies/entanglement/#toc-summary
