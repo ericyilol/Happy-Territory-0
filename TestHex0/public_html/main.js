@@ -4,9 +4,12 @@
  * and open the template in the editor.
  */
 
+//Happy Territory
+//By Eric Yi 
+//The initial code of drawing hexagon is built with a tutorial written by Pedro's Tech Mumbling
 
 
-        var xOffset = 150;
+        var xOffset = 100;
         var yOffset = 50;
 
         var previousPointX;
@@ -14,6 +17,8 @@
 
         var down = false;
         var hex;
+        
+ 
 
         window.onload = function () {
 
@@ -28,10 +33,13 @@
                 var y;
                 
                 console.log(e.pageX);
+                console.log(e.pageY);
+                
 
                 down = true;
+                findTile(e);
 
-                console.log('mouse down');
+//                console.log('mouse down');
 
                 if (e.pageX || e.pageY) {
                     x = e.pageX;
@@ -48,14 +56,14 @@
 
                 previousPointX = x;
                 previousPointY = y;
-            }
+            };
 
             canvas.onmouseup = function (e) {
 
                 down = false;
 
                 console.log('mouse up');
-            }
+            };
 
             canvas.onmousemove = function (e) {
 
@@ -75,6 +83,7 @@
                                   + document.documentElement.scrollLeft;
                     y = e.clientY + document.body.scrollTop
                                   + document.documentElement.scrollTop;
+                          
                 }
                 x -= canvas.offsetLeft;
                 y -= canvas.offsetTop;
@@ -86,9 +95,17 @@
 
                 render();
 
-            }
+            };
         };
-
+        
+        function findTile(e){
+            
+            var center0 =  hex.getHexagonalCoordinates(e.pageX,e.pageY);
+            console.log(center0.u);
+            console.log(center0.v);
+//            
+        };
+        
         function drawHex(context, hexCoordinates) {
 
             var center = hex.getWorldCoordinates(hexCoordinates.u, hexCoordinates.v);
@@ -107,11 +124,11 @@
                           (center.y + hex.a / 2.0)  + yOffset);
             context.lineTo((center.x - hex.b / 2.0) + xOffset,
                            center.y + yOffset);
-            context.lineWidth = 1;
+            context.lineWidth = 2;
             context.strokeStyle = "#444";
      context.fillStyle = "#444";
      context.textAlign = "center";
-            context.textBaseline = "middle";
+     context.textBaseline = "middle";
      context.fillText("(" + hexCoordinates.u + "," + hexCoordinates.v + ")", 
                              center.x + xOffset, center.y + yOffset );
         }
@@ -170,7 +187,7 @@
                 var v = y / this.hexagon_height - u * 0.5;
 
                 return new hexCoordinates(u, v);
-            }
+            };
         }
 
         function worldCoordinates(x, y) {
